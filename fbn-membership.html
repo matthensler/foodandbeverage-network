@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership — Food & Beverage Network</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --magenta:#C2185B;--magenta-light:#E91E72;--magenta-dark:#9B1048;
+  --charcoal:#3D3D3D;--charcoal-light:#5A5A5A;--charcoal-dark:#2A2A2A;
+  --cream:#FFF8F5;--blush:#FDE8EF;--light-gray:#F5F3F0;--white:#FFFFFF;
+  --font-display:'Baloo 2',cursive;--font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--charcoal);background:var(--white);overflow-x:hidden}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{font-family:var(--font-display);font-weight:800;font-size:22px;text-decoration:none;line-height:1.1}
+.nav-logo .food{color:var(--magenta)}.nav-logo .amp{color:var(--charcoal-light);font-size:17px}.nav-logo .bev{color:var(--charcoal)}
+.nav-logo .net{display:block;color:var(--magenta);font-size:11px;letter-spacing:5px;font-weight:700;margin-top:-4px;text-align:right;max-width:145px;margin-left:auto}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--charcoal);font-size:15px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--magenta)}
+.nav-cta{background:var(--magenta);color:white!important;padding:10px 24px;border-radius:50px;font-weight:600;transition:all .2s}
+.nav-cta:hover{background:var(--magenta-dark)}
+.page-hero{padding:140px 40px 60px;background:linear-gradient(165deg,var(--cream) 0%,var(--blush) 40%,#FFFBF9 100%);text-align:center}
+.page-hero h1{font-family:var(--font-display);font-size:48px;font-weight:800;color:var(--charcoal);line-height:1.1;margin-bottom:16px}
+.page-hero h1 span{color:var(--magenta)}
+.page-hero p{font-size:18px;color:var(--charcoal-light);max-width:620px;margin:0 auto;line-height:1.7}
+
+/* SECTION DIVIDERS */
+.section-label{text-align:center;padding:60px 40px 0}
+.section-label h2{font-family:var(--font-display);font-size:36px;font-weight:800;color:var(--charcoal);margin-bottom:8px}
+.section-label p{font-size:16px;color:var(--charcoal-light);max-width:500px;margin:0 auto}
+.section-label.dark{background:var(--charcoal-dark);padding-top:80px}
+.section-label.dark h2{color:white}
+.section-label.dark p{color:rgba(255,255,255,0.6)}
+
+/* MEMBERSHIP CARDS */
+.membership{padding:40px 40px 80px}
+.membership-inner{max-width:1100px;margin:0 auto}
+.mem-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.mem-card{border:2px solid var(--light-gray);border-radius:20px;padding:36px 28px;display:flex;flex-direction:column;transition:all .3s;position:relative}
+.mem-card:hover{border-color:var(--magenta);transform:translateY(-4px);box-shadow:0 16px 48px rgba(194,24,91,0.1)}
+.mem-card.featured{border-color:var(--magenta);background:var(--cream)}
+.mem-card .badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--magenta);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:50px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.mem-card .card-name{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--charcoal);margin-bottom:4px}
+.mem-card .card-for{font-size:13px;color:var(--magenta);font-weight:600;margin-bottom:16px}
+.mem-card .card-price{font-family:var(--font-display);font-size:44px;font-weight:800;color:var(--magenta);line-height:1}
+.mem-card .card-price span{font-size:16px;font-weight:600;color:var(--charcoal-light)}
+.mem-card .card-strike{font-size:15px;color:var(--charcoal-light);text-decoration:line-through;margin-top:4px}
+.mem-card .card-sub{font-size:13px;color:var(--charcoal-light);margin-top:4px;margin-bottom:20px}
+.mem-card .card-note{font-size:13px;color:var(--magenta);font-weight:600;margin-bottom:20px}
+.mem-card .card-desc{font-size:14px;color:var(--charcoal-light);line-height:1.6;margin-bottom:20px}
+.mem-card ul{list-style:none;margin-bottom:28px;flex:1}
+.mem-card ul li{font-size:14px;color:var(--charcoal-light);padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.04);line-height:1.5}
+.mem-card ul li::before{content:'✓';color:var(--magenta);font-weight:700;margin-right:10px}
+.mem-card ul li:last-child{border-bottom:none}
+.mem-card .card-cta-text{font-size:14px;color:var(--charcoal-light);font-style:italic;margin-bottom:16px}
+.btn-primary{background:var(--magenta);color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all .25s;display:inline-block;text-align:center}
+.btn-primary:hover{background:var(--magenta-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(194,24,91,0.25)}
+.btn-outline{background:transparent;color:var(--magenta);padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;border:2px solid var(--magenta);transition:all .25s;display:inline-block;text-align:center}
+.btn-outline:hover{background:var(--magenta);color:white}
+.btn-charcoal{background:white;color:var(--charcoal);padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;border:2px solid rgba(255,255,255,0.3);transition:all .25s;display:inline-block;text-align:center}
+.btn-charcoal:hover{border-color:white;background:rgba(255,255,255,0.1)}
+
+/* TEAM SUB-OPTIONS */
+.team-options{display:flex;gap:16px;margin-bottom:20px}
+.team-opt{flex:1;background:var(--light-gray);border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all .2s;border:2px solid transparent}
+.team-opt:hover,.team-opt.active{border-color:var(--magenta);background:var(--blush)}
+.team-opt .opt-price{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--magenta)}
+.team-opt .opt-seats{font-size:12px;color:var(--charcoal-light);font-weight:600}
+
+/* SPONSORSHIP CARDS */
+.sponsorship{padding:40px 40px 100px;background:var(--charcoal-dark)}
+.sponsorship-inner{max-width:1100px;margin:0 auto}
+.spon-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.spon-card{border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:36px 28px;display:flex;flex-direction:column;transition:all .3s}
+.spon-card:hover{border-color:var(--magenta-light);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.spon-card .card-name{font-family:var(--font-display);font-size:22px;font-weight:700;color:white;margin-bottom:4px}
+.spon-card .card-for{font-size:13px;color:var(--magenta-light);font-weight:600;margin-bottom:16px}
+.spon-card .card-price{font-family:var(--font-display);font-size:32px;font-weight:800;color:white;line-height:1;margin-bottom:4px}
+.spon-card .card-price span{font-size:14px;font-weight:600;color:rgba(255,255,255,0.5)}
+.spon-card .card-sub{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:20px}
+.spon-card ul{list-style:none;margin-bottom:28px;flex:1}
+.spon-card ul li{font-size:14px;color:rgba(255,255,255,0.6);padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.06);line-height:1.5}
+.spon-card ul li::before{content:'✓';color:var(--magenta-light);font-weight:700;margin-right:10px}
+.spon-card ul li:last-child{border-bottom:none}
+.spon-card .card-cta-text{font-size:14px;color:rgba(255,255,255,0.4);font-style:italic;margin-bottom:16px}
+
+/* BENEFITS */
+.benefits-section{padding:80px 40px;background:var(--light-gray)}
+.benefits-inner{max-width:900px;margin:0 auto}
+.benefits-section h2{font-family:var(--font-display);font-size:36px;font-weight:800;color:var(--charcoal);text-align:center;margin-bottom:12px}
+.benefits-inner>p{font-size:17px;color:var(--charcoal-light);text-align:center;max-width:600px;margin:0 auto 40px;line-height:1.7}
+.benefit-row{display:flex;gap:16px;padding:18px 20px;background:white;border-radius:12px;margin-bottom:12px;align-items:flex-start}
+.benefit-row .check{color:var(--magenta);font-weight:700;font-size:18px;flex-shrink:0;margin-top:1px}
+.benefit-row p{font-size:15px;color:var(--charcoal);line-height:1.6}
+.benefit-row p strong{color:var(--charcoal)}
+
+/* FAQ */
+.faq{padding:80px 40px;background:var(--white)}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq h2{font-family:var(--font-display);font-size:36px;font-weight:800;color:var(--charcoal);text-align:center;margin-bottom:40px}
+.faq-item{border-bottom:1px solid var(--light-gray);padding:20px 0}
+.faq-item summary{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-item summary::after{content:'+';font-size:24px;color:var(--magenta);font-weight:400;transition:transform .2s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{font-size:15px;color:var(--charcoal-light);line-height:1.7;padding-top:12px}
+
+.cta-banner{padding:80px 40px;background:var(--magenta);text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-50%;left:-10%;width:60%;height:200%;border-radius:50%;background:rgba(255,255,255,0.04)}
+.cta-banner h2{font-family:var(--font-display);font-size:40px;font-weight:800;color:white;margin-bottom:16px;position:relative;z-index:1}
+.cta-banner p{font-size:18px;color:rgba(255,255,255,0.85);margin-bottom:32px;position:relative;z-index:1}
+.btn-white{background:white;color:var(--magenta);padding:16px 40px;border-radius:50px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all .25s;position:relative;z-index:1}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+footer{padding:40px;background:var(--charcoal-dark);text-align:center;border-top:1px solid rgba(255,255,255,0.06)}
+footer p{font-size:13px;color:rgba(255,255,255,0.3)}
+footer a{color:var(--magenta-light);text-decoration:none}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.mem-cards,.spon-cards{grid-template-columns:1fr}.nav-links{display:none}.team-options{flex-direction:column}}
+@media(max-width:600px){.page-hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a href="fbn-website.html" class="nav-logo"><span class="food">food</span> <span class="amp">&</span> <span class="bev">beverage</span><span class="net">network</span></a>
+  <div class="nav-links">
+    <a href="fbn-website.html">Home</a><a href="#membership">Membership</a><a href="#sponsorship">Sponsorship</a><a href="#pricing" class="nav-cta">Join Now</a>
+  </div>
+</div></nav>
+
+<section class="page-hero">
+  <h1>Join the Network. <span>Grow Your Business.</span></h1>
+  <p>Access the food & beverage industry's most connected community — built for real relationships, real conversations, and real opportunities.</p>
+</section>
+
+<!-- MEMBERSHIP -->
+<div class="section-label" id="membership">
+  <h2>Membership</h2>
+  <p>Choose the option that fits you best. Every member gets access to the same community.</p>
+</div>
+
+<section class="membership" id="pricing">
+  <div class="membership-inner">
+    <div class="mem-cards">
+
+      <!-- INDIVIDUAL -->
+      <div class="mem-card featured fade-up">
+        <div class="badge">Limited Intro Pricing</div>
+        <div class="card-name">Individual</div>
+        <div class="card-for">Founders, operators, R&D, product developers</div>
+        <div class="card-strike">$299/yr</div>
+        <div class="card-price">$99<span>/yr</span></div>
+        <div class="card-note">Founding member intro pricing</div>
+        <ul>
+          <li>Invite-only Slack community</li>
+          <li>Access to full member network</li>
+          <li>Searchable member directory</li>
+          <li>50%+ discount on all events</li>
+          <li>Content library & industry insights</li>
+          <li>Member perks & partner offers</li>
+          <li>Discounted job board postings</li>
+          <li>Newsletters & annual F&B Network report</li>
+        </ul>
+        <div class="card-cta-text">Start building connections in your market</div>
+        <a href="#" class="btn-primary">Join as Individual</a>
+      </div>
+
+      <!-- TEAM -->
+      <div class="mem-card fade-up">
+        <div class="card-name">Team</div>
+        <div class="card-for">Brands & manufacturers with multiple team members</div>
+        <div class="team-options">
+          <div class="team-opt active" onclick="selectTeam(this,'5')">
+            <div style="font-size:13px;color:#5A5A5A;text-decoration:line-through">$999</div><div class="opt-price">$499</div>
+            <div class="opt-seats">Up to 5 seats</div>
+          </div>
+          <div class="team-opt" onclick="selectTeam(this,'15')">
+            <div style="font-size:13px;color:#5A5A5A;text-decoration:line-through">$1,999</div><div class="opt-price">$999</div>
+            <div class="opt-seats">Up to 15 seats</div>
+          </div>
+        </div>
+        <div class="card-note">Founding member intro pricing</div>
+        <ul>
+          <li>Everything in Individual</li>
+          <li>Shared access across your team</li>
+          <li>Priority event access</li>
+          <li>Team visibility within the network</li>
+          <li>Company logo on FBN website</li>
+          <li>Committee & working group eligibility</li>
+        </ul>
+        <div class="card-cta-text">Bring your team into the network</div>
+        <a href="#" class="btn-outline">Select Team Plan</a>
+      </div>
+
+      
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div class="benefits-inner">
+    <h2>What Every Member Gets</h2>
+    <p>This is a community first. Everyone has a seat at the table.</p>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Invite-only Slack community</strong> — Immediate access to our private members-only Slack where you can connect in real time, share insights, ask questions, and build relationships between events.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Priority network access</strong> — Connect with executives and professionals from every corner of the industry: entrepreneurs, emerging brands, service providers, consultant experts, and seasoned pros from established companies.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Searchable member directory</strong> — Inclusion in, and access to, a searchable database of all F&B Network members, sponsors, and partners.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>50%+ discount on all events</strong> — Access to, and a minimum 50% registration discount, for all F&B Network events — designed to provide immediate access to industry best practices, insights, and first-hand knowledge from leading experts.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Industry partner events & offers</strong> — Discounts, special offers, and invitations to events from our industry partners.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Member perks</strong> — Presentations and materials from programming, partner offers, a searchable job resource center, and a co-packer database.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Content & industry intelligence</strong> — Regular newsletters and the annual F&B Network industry report, plus resource offerings and news updates from members and partners.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Discounted job board postings</strong> — Post open roles on a dedicated food & beverage industry job board, at member-only rates.</p></div>
+    <div class="benefit-row fade-up"><div class="check">✓</div><p><strong>Committee & working group opportunities</strong> — Opportunity for appointment to committees and working groups that shape the direction of the network.</p></div>
+  </div>
+</section>
+
+<!-- SPONSORSHIP -->
+<div class="section-label dark" id="sponsorship">
+  <h2>Partnership & Sponsorship</h2>
+  <p>Put your brand in front of the industry's most engaged professionals. 2026–2027 Founding Partner Rates.</p>
+</div>
+
+<section class="sponsorship">
+  <div class="sponsorship-inner">
+    <div class="spon-cards">
+
+      <div class="spon-card fade-up">
+        <div class="card-name">Chapter Supporting Sponsor</div>
+        <div class="card-for">Build visibility in your region</div>
+        <div class="card-price">$15,000 <span>/ year</span></div>
+        <ul>
+          <li>25 team memberships included</li>
+          <li>Slack community access for all members</li>
+          <li>Logo on chapter events & email communications</li>
+          <li>Featured listing in member directory</li>
+          <li>10 complimentary tickets per event (40/yr)</li>
+          <li>1 sponsored eblast per year</li>
+          <li>Social media recognition quarterly</li>
+          <li>Access to chapter attendee list</li>
+        </ul>
+        <a href="#" class="btn-charcoal">Let's Talk</a>
+      </div>
+
+      <div class="spon-card featured fade-up">
+        <div class="card-name">Chapter Presenting Sponsor</div>
+        <div class="card-for">Own your chapter — only 1 per region</div>
+        <div class="card-price">$35,000 <span>/ year</span></div>
+        <div class="card-sub">Everything in Supporting, plus:</div>
+        <ul>
+          <li>50 team memberships included</li>
+          <li>Industry Advisory Board seat</li>
+          <li>Exclusive — only 1 per chapter</li>
+          <li>Premier brand positioning on chapter page</li>
+          <li>15 complimentary tickets per event (60/yr)</li>
+          <li>Speaking opportunity at 1 event/yr</li>
+          <li>2 sponsored eblasts + 1 webinar/yr</li>
+          <li>Social media recognition monthly</li>
+          <li>Logo on F&B Network sponsorship page</li>
+          <li>First right of renewal</li>
+        </ul>
+        <a href="#" class="btn-charcoal">Let's Talk</a>
+      </div>
+
+      <div class="spon-card fade-up">
+        <div class="card-name">Global Partner</div>
+        <div class="card-for">Presence across all 9 chapters</div>
+        <div class="card-price">$75,000 <span>/ year</span></div>
+        <div class="card-sub">Everything in Presenting, across ALL 9 chapters, plus:</div>
+        <ul>
+          <li>Unlimited team memberships</li>
+          <li>Industry Advisory Board seat</li>
+          <li>Presence across all 9 global chapters</li>
+          <li>20 complimentary tickets to any events</li>
+          <li>Speaking at 2+ events/yr (any chapter)</li>
+          <li>4 global eblasts + 2 global webinars/yr</li>
+          <li>Logo on homepage & all communications</li>
+          <li>Co-branded content & research opportunities</li>
+          <li>Quarterly strategy sessions</li>
+          <li>First right of renewal</li>
+        </ul>
+        <a href="#" class="btn-charcoal">Let's Talk</a>
+      </div>
+
+    </div>
+
+    <div style="max-width:800px;margin:40px auto 0;text-align:center;">
+      <h3 style="color:white;font-family:var(--font-display);font-size:22px;margin-bottom:16px;">Additional Opportunities</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+          <div style="color:var(--magenta);font-weight:700;font-size:16px;margin-bottom:4px;">Event Sponsor</div>
+          <div style="color:white;font-size:20px;font-weight:700;">$10,000<span style="font-size:13px;color:#aaa;"> / event</span></div>
+          <p style="color:#aaa;font-size:13px;margin-top:8px;">On-site branding, 20 tickets, attendee list access</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+          <div style="color:var(--magenta);font-weight:700;font-size:16px;margin-bottom:4px;">Sponsored Webinar</div>
+          <div style="color:white;font-size:20px;font-weight:700;">$5,000<span style="font-size:13px;color:#aaa;"> chapter</span> / $7,500<span style="font-size:13px;color:#aaa;"> global</span></div>
+          <p style="color:#aaa;font-size:13px;margin-top:8px;">Present to the F&B Network community</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:20px;">
+          <div style="color:var(--magenta);font-weight:700;font-size:16px;margin-bottom:4px;">Sponsored Eblast</div>
+          <div style="color:white;font-size:20px;font-weight:700;">$2,500<span style="font-size:13px;color:#aaa;"> chapter</span> / $5,000<span style="font-size:13px;color:#aaa;"> global</span></div>
+          <p style="color:#aaa;font-size:13px;margin-top:8px;">Dedicated email to members</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <h2>Frequently Asked Questions</h2>
+    <details class="faq-item"><summary>What's the difference between Individual and Team?</summary><p>Individual is for one person — great for independent professionals, consultants, or anyone joining on their own. Team is for companies who want to bring multiple people into the network — choose 5 or 15 seats depending on your team size. Both get the same core community benefits.</p></details>
+    <details class="faq-item"><summary>What does "founding member rate locked in forever" mean?</summary><p>The price you pay now will never increase for as long as you maintain your membership. As the network grows and standard prices go up, your rate stays the same.</p></details>
+    <details class="faq-item"><summary>How limited is the $99 individual intro pricing?</summary><p>We're offering $99 to a limited number of founding individual members. Once those spots are filled, the price goes to $299/year. We recommend locking it in early.</p></details>
+    <details class="faq-item"><summary>When does the network officially launch?</summary><p>We're accepting founding members now! The official launch — including launch parties — is planned for January 2027. Founding members get immediate Slack access and will be the first invited to all events.</p></details>
+    <details class="faq-item"><summary>Is this an annual membership?</summary><p>Yes, all memberships are billed annually. Your founding rate renews at the same price each year.</p></details>
+    <details class="faq-item"><summary>Is there a refund policy?</summary><p>All membership fees are non-refundable. We encourage you to review the membership benefits and reach out with any questions before joining to make sure it's the right fit.</p></details>
+    <details class="faq-item"><summary>How do sponsorship and partnership packages work?</summary><p>Sponsorship packages include team memberships, event access, branding, and content opportunities. Each tier has fixed pricing and clearly defined benefits — see the packages above, or reach out for details.</p></details>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>This Is Your Network</h2>
+  <p>The food & beverage industry runs on relationships. Start building yours.</p>
+  <a href="#pricing" class="btn-white">Become a Founding Member</a>
+</section>
+
+<footer><p>© 2026 Food & Beverage Network. All Rights Reserved. <a href="fbn-website.html">Back to Home</a></p></footer>
+
+<script>
+function selectTeam(el, seats) {
+  el.parentElement.querySelectorAll('.team-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

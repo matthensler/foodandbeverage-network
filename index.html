@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food & Beverage Network</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --magenta:#C2185B;
+  --magenta-light:#E91E72;
+  --magenta-dark:#9B1048;
+  --charcoal:#3D3D3D;
+  --charcoal-light:#5A5A5A;
+  --charcoal-dark:#2A2A2A;
+  --cream:#FFF8F5;
+  --warm-white:#FFFBF9;
+  --blush:#FDE8EF;
+  --light-gray:#F5F3F0;
+  --white:#FFFFFF;
+  --font-display:'Baloo 2',cursive;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--charcoal);background:var(--white);overflow-x:hidden}
+
+/* NAVIGATION */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);transition:all .3s}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{font-family:var(--font-display);font-weight:800;font-size:22px;text-decoration:none;line-height:1.1}
+.nav-logo .food{color:var(--magenta)}
+.nav-logo .amp{color:var(--charcoal-light);font-size:17px}
+.nav-logo .bev{color:var(--charcoal)}
+.nav-logo .net{display:block;color:var(--magenta);font-size:11px;letter-spacing:5px;font-weight:700;margin-top:-4px;margin-left:auto;text-align:right;max-width:145px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--charcoal);font-size:15px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--magenta)}
+.nav-cta{background:var(--magenta);color:white!important;padding:10px 24px;border-radius:50px;font-weight:600;transition:all .2s}
+.nav-cta:hover{background:var(--magenta-dark);transform:translateY(-1px)}
+.mobile-menu{display:none;background:none;border:none;cursor:pointer}
+.mobile-menu span{display:block;width:24px;height:2px;background:var(--charcoal);margin:5px 0;transition:.3s}
+
+/* HERO */
+.hero{padding:160px 40px 100px;background:linear-gradient(165deg,var(--cream) 0%,var(--blush) 40%,var(--warm-white) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:rgba(194,24,91,0.04);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:350px;height:350px;border-radius:50%;background:rgba(194,24,91,0.03);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-text h1{font-family:var(--font-display);font-size:58px;font-weight:800;line-height:1.05;margin-bottom:24px}
+.hero-text h1 .line1{color:var(--magenta)}
+.hero-text h1 .line2{color:var(--charcoal)}
+.hero-text p{font-size:19px;line-height:1.7;color:var(--charcoal-light);margin-bottom:36px;max-width:480px}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--magenta);color:white;padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:600;font-size:16px;transition:all .25s;display:inline-block}
+.btn-primary:hover{background:var(--magenta-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(194,24,91,0.25)}
+.btn-secondary{background:transparent;color:var(--charcoal);padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:600;font-size:16px;border:2px solid var(--charcoal);transition:all .25s;display:inline-block}
+.btn-secondary:hover{border-color:var(--magenta);color:var(--magenta)}
+.hero-visual{display:flex;justify-content:center;align-items:center;position:relative}
+.hero-card{background:white;border-radius:20px;padding:40px;box-shadow:0 20px 60px rgba(0,0,0,0.08);transform:rotate(-2deg);max-width:380px;width:100%}
+.hero-card .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.hero-card .stat{text-align:center;padding:16px}
+.hero-card .stat-num{font-family:var(--font-display);font-size:36px;font-weight:800;color:var(--magenta)}
+.hero-card .stat-label{font-size:13px;color:var(--charcoal-light);font-weight:500;margin-top:2px}
+.hero-card-badge{position:absolute;top:-16px;right:-16px;background:var(--charcoal);color:white;padding:12px 20px;border-radius:50px;font-family:var(--font-display);font-weight:700;font-size:14px;transform:rotate(4deg)}
+
+/* MISSION */
+.mission{padding:100px 40px;background:var(--white)}
+.mission-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+.mission-label{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--magenta);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+.mission h2{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--charcoal);line-height:1.15;margin-bottom:20px}
+.mission p{font-size:17px;line-height:1.8;color:var(--charcoal-light);margin-bottom:16px}
+.mission-image{background:var(--charcoal-dark);border-radius:24px;height:380px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.mission-image::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--magenta-dark) 0%,var(--charcoal-dark) 100%);opacity:0.9}
+.mission-image::after{content:'Connecting the Industry';position:relative;z-index:1;font-family:var(--font-display);font-size:32px;font-weight:800;color:white;text-align:center;padding:0 40px;line-height:1.3}
+
+/* PILLARS */
+.pillars{padding:0 40px;margin-top:-60px;position:relative;z-index:10}
+.pillars-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.1)}
+.pillar-card{background:var(--charcoal-dark);padding:48px 36px;display:flex;flex-direction:column}
+.pillar-card:nth-child(2){background:var(--charcoal)}
+.pillar-card:nth-child(3){background:var(--magenta-dark)}
+.pillar-card h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:white;margin-bottom:14px}
+.pillar-card p{font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);flex:1}
+.pillar-link{display:inline-block;margin-top:24px;padding:12px 0;color:white;font-size:14px;font-weight:600;text-decoration:none;letter-spacing:2px;text-transform:uppercase;border-top:2px solid rgba(255,255,255,0.2);width:100%;transition:all .2s}
+.pillar-link:hover{border-top-color:white}
+
+/* STATS BAR */
+.stats{padding:60px 40px;background:var(--charcoal-dark)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
+.stat-item .stat-number{font-family:var(--font-display);font-size:48px;font-weight:800;color:var(--magenta-light)}
+.stat-item .stat-text{font-size:15px;color:rgba(255,255,255,0.7);font-weight:500;margin-top:4px}
+
+/* BENEFITS */
+.benefits{padding:100px 40px;background:var(--light-gray)}
+.section-header{text-align:center;max-width:600px;margin:0 auto 60px}
+.section-header h2{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--charcoal);margin-bottom:16px}
+.section-header p{font-size:17px;color:var(--charcoal-light);line-height:1.7}
+.benefits-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.benefit-card{background:white;border-radius:16px;padding:36px;transition:all .3s;border:1px solid rgba(0,0,0,0.04)}
+.benefit-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+.benefit-icon{width:56px;height:56px;border-radius:14px;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px}
+.benefit-card h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:10px}
+.benefit-card p{font-size:15px;line-height:1.7;color:var(--charcoal-light)}
+
+/* CTA BANNER */
+.cta-banner{padding:80px 40px;background:var(--magenta);text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-50%;left:-10%;width:60%;height:200%;border-radius:50%;background:rgba(255,255,255,0.04)}
+.cta-banner::after{content:'';position:absolute;bottom:-50%;right:-10%;width:50%;height:200%;border-radius:50%;background:rgba(0,0,0,0.06)}
+.cta-banner h2{font-family:var(--font-display);font-size:40px;font-weight:800;color:white;margin-bottom:16px;position:relative;z-index:1}
+.cta-banner p{font-size:18px;color:rgba(255,255,255,0.85);margin-bottom:32px;position:relative;z-index:1}
+.btn-white{background:white;color:var(--magenta);padding:16px 40px;border-radius:50px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all .25s;position:relative;z-index:1}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 40px;background:var(--white)}
+.testimonials-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.testimonial-card{background:var(--cream);border-radius:16px;padding:40px;position:relative}
+.testimonial-card::before{content:'"';font-family:var(--font-display);font-size:80px;color:var(--magenta);opacity:0.2;position:absolute;top:16px;left:28px;line-height:1}
+.testimonial-card blockquote{font-size:16px;line-height:1.8;color:var(--charcoal);font-style:italic;margin-bottom:20px;position:relative;z-index:1}
+.testimonial-author{font-weight:700;color:var(--charcoal)}
+.testimonial-title{font-size:14px;color:var(--charcoal-light)}
+
+/* WHO THIS IS FOR */
+.who-for{padding:100px 40px;background:var(--white)}
+.who-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.who-card{border-radius:16px;overflow:hidden;background:white;box-shadow:0 8px 32px rgba(0,0,0,0.06);transition:all .3s;border:1px solid rgba(0,0,0,0.04)}
+.who-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.1)}
+.who-card-header{background:var(--charcoal-dark);padding:32px 28px}
+.who-card-header h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:white}
+.who-card-body{padding:28px;display:flex;flex-direction:column}
+.who-card-body p{font-size:15px;line-height:1.7;color:var(--charcoal-light);flex:1}
+
+/* WHY NOW */
+.why-now{padding:100px 40px;background:var(--cream)}
+.why-now-inner{max-width:1200px;margin:0 auto}
+.trends-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.trend-card{background:white;border-radius:14px;padding:28px;border:1px solid rgba(0,0,0,0.04);transition:all .3s}
+.trend-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.06)}
+.trend-icon{font-size:28px;margin-bottom:12px}
+.trend-card h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+.trend-card p{font-size:14px;line-height:1.7;color:var(--charcoal-light)}
+
+/* EVENTS */
+.events{padding:100px 40px;background:var(--light-gray)}
+.events-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.event-card{background:white;border-radius:16px;overflow:hidden;transition:all .3s;border:1px solid rgba(0,0,0,0.04)}
+.event-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.event-date{background:var(--magenta);color:white;padding:16px;text-align:center;font-family:var(--font-display)}
+.event-date .month{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:0.85}
+.event-date .day{font-size:36px;font-weight:800;line-height:1.1}
+.event-info{padding:24px}
+.event-info h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+.event-info p{font-size:14px;color:var(--charcoal-light);line-height:1.6}
+.event-tag{display:inline-block;background:var(--blush);color:var(--magenta);font-size:12px;font-weight:600;padding:4px 12px;border-radius:50px;margin-top:12px}
+
+/* CHAPTERS */
+.chapters{padding:100px 40px;background:var(--charcoal-dark)}
+.chapters-inner{max-width:1200px;margin:0 auto}
+.chapters .section-header h2{color:white}
+.chapters .section-header p{color:rgba(255,255,255,0.6)}
+.chapters-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.chapter-card{background:rgba(255,255,255,0.06);border-radius:16px;padding:32px;text-align:center;border:1px solid rgba(255,255,255,0.08);transition:all .3s}
+.chapter-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px)}
+.chapter-map{font-size:36px;margin-bottom:14px}
+.chapter-card h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:white;margin-bottom:10px}
+.chapter-card p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.55)}
+.chapter-status{display:inline-block;margin-top:16px;font-size:12px;font-weight:600;color:var(--magenta-light);letter-spacing:1px;text-transform:uppercase}
+.chapters .btn-secondary{border-color:rgba(255,255,255,0.3);color:white}
+.chapters .btn-secondary:hover{border-color:var(--magenta-light);color:var(--magenta-light)}
+
+/* JOB BOARD */
+.job-board{padding:100px 40px;background:var(--white)}
+.job-board-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.job-board-features{margin-top:24px;display:flex;flex-direction:column;gap:16px}
+.jb-feature{display:flex;flex-direction:column;gap:4px}
+.jb-feature strong{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--magenta)}
+.jb-feature span{font-size:15px;color:var(--charcoal-light);line-height:1.6}
+.job-board-preview{display:flex;justify-content:center}
+.jb-mock{background:var(--light-gray);border-radius:16px;padding:24px;width:100%;max-width:420px;box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+.jb-mock-header{display:flex;gap:6px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,0.06)}
+.jb-mock-dot{width:10px;height:10px;border-radius:50%}
+.jb-mock-row{padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.05)}
+.jb-mock-row:last-child{border-bottom:none}
+.jb-mock-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--charcoal)}
+.jb-mock-company{font-size:13px;color:var(--charcoal-light);margin-top:2px}
+.jb-mock-tags{display:flex;gap:6px;margin-top:8px}
+.jb-mock-tags span{background:var(--blush);color:var(--magenta);font-size:11px;font-weight:600;padding:3px 10px;border-radius:50px}
+
+/* GET CONNECTED */
+.connected{padding:100px 40px;background:var(--white)}
+.connected-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.connected-card{text-align:center;padding:40px 28px;border-radius:16px;border:2px solid var(--light-gray);transition:all .3s}
+.connected-card:hover{border-color:var(--magenta);background:var(--cream)}
+.connected-card .icon{font-size:40px;margin-bottom:16px}
+.connected-card h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--charcoal);margin-bottom:10px}
+.connected-card p{font-size:14px;color:var(--charcoal-light);line-height:1.7}
+.connected-card a{display:inline-block;margin-top:16px;color:var(--magenta);font-weight:600;text-decoration:none;font-size:14px}
+.connected-card a:hover{text-decoration:underline}
+
+/* NEWSLETTER */
+.newsletter{padding:80px 40px;background:var(--charcoal-dark)}
+.newsletter-inner{max-width:600px;margin:0 auto;text-align:center}
+.newsletter h2{font-family:var(--font-display);font-size:32px;font-weight:800;color:white;margin-bottom:12px}
+.newsletter p{color:rgba(255,255,255,0.65);margin-bottom:28px;font-size:16px}
+.newsletter-form{display:flex;gap:12px;max-width:480px;margin:0 auto}
+.newsletter-form input{flex:1;padding:14px 20px;border-radius:50px;border:none;font-size:15px;font-family:var(--font-body);background:rgba(255,255,255,0.1);color:white;outline:none}
+.newsletter-form input::placeholder{color:rgba(255,255,255,0.4)}
+.newsletter-form input:focus{background:rgba(255,255,255,0.15)}
+.newsletter-form button{background:var(--magenta);color:white;border:none;padding:14px 28px;border-radius:50px;font-weight:600;font-size:15px;cursor:pointer;font-family:var(--font-body);transition:all .2s;white-space:nowrap}
+.newsletter-form button:hover{background:var(--magenta-light)}
+
+/* FOOTER */
+footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px solid rgba(255,255,255,0.06)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:var(--font-display);font-weight:800;font-size:20px;margin-bottom:12px}
+.footer-brand .footer-logo .food{color:var(--magenta-light)}
+.footer-brand .footer-logo .bev{color:rgba(255,255,255,0.9)}
+.footer-brand .footer-logo .net{display:block;color:var(--magenta-light);font-size:10px;letter-spacing:4px;font-weight:700;margin-top:-2px;margin-left:auto;text-align:right;max-width:135px}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:280px}
+.footer-col h4{font-family:var(--font-display);font-size:16px;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--magenta-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:13px;color:rgba(255,255,255,0.3)}
+.footer-social{display:flex;gap:16px}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;font-size:14px;transition:all .2s}
+.footer-social a:hover{background:var(--magenta);color:white}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .pillars-inner{grid-template-columns:1fr}
+  .pillars{margin-top:-40px}
+  .job-board-inner{grid-template-columns:1fr}
+  .connected-grid[style]{grid-template-columns:1fr!important}
+  .hero-inner,.mission-inner{grid-template-columns:1fr}
+  .hero-visual{order:-1}
+  .hero-text h1{font-size:40px}
+  .benefits-grid,.events-grid,.connected-grid,.who-grid,.chapters-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
+  .testimonials-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .mobile-menu{display:block}
+  .newsletter-form{flex-direction:column}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:1fr}
+  .hero{padding:120px 20px 60px}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="food">food</span> <span class="amp">&</span> <span class="bev">beverage</span>
+      <span class="net">network</span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="fbn-membership.html">Membership</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="fbn-membership.html" class="nav-cta">Become a Founding Member</a>
+    </div>
+    <button class="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="position:relative;min-height:420px;overflow:hidden;background:#54565A">
+  <!-- Food image background -->
+  <div style="position:absolute;inset:0;background-image:url('hero-bg.png');background-size:cover;background-position:center top"></div>
+  <!-- Gradient from left for text readability -->
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg, #54565A 0%, #54565A 25%, rgba(84,86,90,0.85) 40%, rgba(84,86,90,0.3) 55%, transparent 70%)"></div>
+  <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:50px 50px 30px;min-height:420px;display:flex;align-items:center">
+    <div style="max-width:460px">
+      <div class="fade-up" style="display:inline-block;background:var(--magenta);color:white;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:20px">🚀 Now Accepting Founding Members</div>
+      <h1 class="fade-up" style="font-family:var(--font-display);font-size:46px;font-weight:800;color:white;line-height:1.1;margin:0 0 20px">
+        The new home<br>for food &<br>beverage<br><span style="color:var(--magenta)">professionals</span>
+      </h1>
+      
+      <div class="fade-up" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="fbn-membership.html" style="display:inline-flex;align-items:center;padding:12px 28px;font-size:15px;font-weight:600;color:white;background:#C2185B;border-radius:100px;text-decoration:none;transition:all .3s">Become a Founding Member</a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS FOOD & BEVERAGE NETWORK? -->
+<section style="padding:80px 40px;background:white" id="about">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header fade-up" style="margin-bottom:16px">
+      <h2 style="white-space:nowrap">What Is Food & Beverage Network?</h2>
+    </div>
+    <p style="color:var(--charcoal-light);font-size:18px;line-height:1.7;max-width:800px;margin:0 auto 48px;text-align:center">A community-first platform built for the professionals driving the food & beverage industry forward.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div class="fade-up" style="background:var(--cream);border-radius:14px;padding:28px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="background:var(--magenta);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">👥</span>
+          <h3 style="font-size:17px;margin:0;color:var(--charcoal)">Member Community</h3>
+        </div>
+        <p style="color:var(--charcoal-light);font-size:14px;line-height:1.7;margin:0">Executives, founders, R&D pros, operators, and service providers — all in one network</p>
+      </div>
+      <div class="fade-up" style="background:var(--cream);border-radius:14px;padding:28px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="background:var(--magenta);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">🌍</span>
+          <h3 style="font-size:17px;margin:0;color:var(--charcoal)">9 Global Chapters</h3>
+        </div>
+        <p style="color:var(--charcoal-light);font-size:14px;line-height:1.7;margin:0">West Coast, Midwest, South, East Coast, Canada, Europe, Latin America, Asia, ANZ</p>
+      </div>
+      <div class="fade-up" style="background:var(--cream);border-radius:14px;padding:28px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="background:var(--magenta);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">📅</span>
+          <h3 style="font-size:17px;margin:0;color:var(--charcoal)">Quarterly Events</h3>
+        </div>
+        <p style="color:var(--charcoal-light);font-size:14px;line-height:1.7;margin:0">In-person networking events in every active chapter, plus global webinars</p>
+      </div>
+      <div class="fade-up" style="background:var(--cream);border-radius:14px;padding:28px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="background:var(--magenta);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">💼</span>
+          <h3 style="font-size:17px;margin:0;color:var(--charcoal)">Industry Job Board</h3>
+        </div>
+        <p style="color:var(--charcoal-light);font-size:14px;line-height:1.7;margin:0">A dedicated job board focused on food & beverage professionals</p>
+      </div>
+      <div class="fade-up" style="background:var(--cream);border-radius:14px;padding:28px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="background:var(--magenta);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">💬</span>
+          <h3 style="font-size:17px;margin:0;color:var(--charcoal)">Invite-Only Slack</h3>
+        </div>
+        <p style="color:var(--charcoal-light);font-size:14px;line-height:1.7;margin:0">Real-time community for members to connect between events</p>
+      </div>
+      <div class="fade-up" style="background:var(--cream);border-radius:14px;padding:28px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="background:var(--magenta);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">📊</span>
+          <h3 style="font-size:17px;margin:0;color:var(--charcoal)">Industry Intelligence</h3>
+        </div>
+        <p style="color:var(--charcoal-light);font-size:14px;line-height:1.7;margin:0">Newsletters, annual report, and curated insights</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW? WHY US? (merged vision + why now + 4 cards) -->
+<section style="background:var(--charcoal-dark);padding:80px 40px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header fade-up" style="margin-bottom:16px">
+      <h2 style="color:white">Why Now? Why Us?</h2>
+    </div>
+    <p style="color:#aaa;font-size:18px;line-height:1.7;max-width:800px;margin:0 auto 48px;text-align:center">The industry is transforming faster than ever. The professionals driving it need a new place to connect, share, and grow together.</p>
+
+    <!-- 4 POSITIONING CARDS -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:60px">
+      <div class="fade-up" style="background:rgba(255,255,255,0.05);border-radius:14px;padding:32px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-size:28px">⭐</span>
+          <h3 style="color:var(--magenta);font-size:20px;margin:0;font-family:var(--font-display)">Built for What's Next</h3>
+        </div>
+        <p style="color:#bbb;font-size:15px;line-height:1.7;margin:0">Reformulation. AI in R&D. Clean label. Sodium reduction. Natural colors. GLP-1. The industry is evolving fast and professionals need a community built for where things are going, not where they've been.</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.05);border-radius:14px;padding:32px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-size:28px">🤝</span>
+          <h3 style="color:var(--magenta);font-size:20px;margin:0;font-family:var(--font-display)">Relationships Drive Growth</h3>
+        </div>
+        <p style="color:#bbb;font-size:15px;line-height:1.7;margin:0">In food & beverage, your next partnership, hire, or customer comes from who you know. The industry needs a dedicated space for building those relationships — not just attending trade shows once a year.</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.05);border-radius:14px;padding:32px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-size:28px">🌍</span>
+          <h3 style="color:var(--magenta);font-size:20px;margin:0;font-family:var(--font-display)">Global Industry, Local Connections</h3>
+        </div>
+        <p style="color:#bbb;font-size:15px;line-height:1.7;margin:0">The industry operates globally but professionals network locally and narrowly. There's a massive opportunity to connect people across regions, disciplines, and company sizes.</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.05);border-radius:14px;padding:32px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-size:28px">👥</span>
+          <h3 style="color:var(--magenta);font-size:20px;margin:0;font-family:var(--font-display)">A New Home for the Industry</h3>
+        </div>
+        <p style="color:#bbb;font-size:15px;line-height:1.7;margin:0">We're building a place where food & beverage professionals across the entire value chain — brands, ingredients, foodservice, manufacturing, and providers — can come together as one community.</p>
+      </div>
+    </div>
+
+    <!-- 8 TREND CARDS -->
+    <h3 style="color:white;text-align:center;font-family:var(--font-display);font-size:24px;margin-bottom:8px" class="fade-up">The Industry Is at an Inflection Point</h3>
+    <p style="color:#aaa;text-align:center;font-size:15px;margin-bottom:32px" class="fade-up">More is changing right now than in the last 20 years combined.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">🧬 Functional Health, GLP-1 & Protein</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">GLP-1 reshaping demand for high-protein, gut health, and satiety products</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">🔬 Reformulation & Clean Label</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">Replacing artificial additives with natural, functional ingredients</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">🍬 Sugar & Sodium Reduction</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">Maintaining taste while meeting consumer health demands</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">🌱 Plant-Based 2.0 & Alt Proteins</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">Perfecting taste, texture, and nutrition beyond meat substitutes</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">🏷️ Natural Colors & Ingredients</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">Consumers demanding simple, recognizable ingredient lists</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">🤖 AI & Digitalization in R&D</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">Accelerating formulation, consumer insights, and supply chains</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">♻️ Sustainability & Upcycling</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">Biodegradable packaging, upcycled ingredients, waste reduction</p>
+      </div>
+      <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
+        <h4 style="color:white;font-size:15px;margin:0 0 8px">🌶️ Global Flavors & Sensory Innovation</h4>
+        <p style="color:#999;font-size:13px;line-height:1.6;margin:0">Bold, globally inspired flavors driving category growth</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px" class="fade-up">
+      <p style="font-size:18px;color:#aaa;max-width:600px;margin:0 auto 24px;line-height:1.7">The industry is changing fast. The professionals who stay connected, stay ahead.</p>
+      <a href="fbn-membership.html" class="btn-primary">Become a Founding Member</a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="membership">
+  <div class="section-header fade-up">
+    <h2>Why Become a Founding Member?</h2>
+    <p>Get early access to the tools, connections, and content that will define the future of our industry.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">🔗</div>
+      <h3>Build Your Network Early</h3>
+      <p>Be among the first to connect with forward-thinking professionals across the food & beverage industry — including instant access to our invite-only Slack community for real-time conversations.</p>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">📚</div>
+      <h3>Education & Insights</h3>
+      <p>Access curated content, webinars, and thought leadership designed specifically for food & beverage professionals. Learn from the people shaping the industry.</p>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">🎟️</div>
+      <h3>Exclusive Founding Perks</h3>
+      <p>Lock in founding member pricing forever. Plus get early access to events, priority invitations, and special recognition as a charter member of the community.</p>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">📈</div>
+      <h3>Amplify Your Brand</h3>
+      <p>Increase your visibility from the start. Founding members get featured placement, speaking opportunities, and access to a growing audience of industry peers.</p>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">🗳️</div>
+      <h3>Shape the Community</h3>
+      <p>As a founding member, you have a seat at the table. Help us decide what content to create, which events to host, and how the network grows.</p>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">📖</div>
+      <h3>Industry Directory</h3>
+      <p>Be among the first listed in our member directory — connecting co-packers, suppliers, brands, and professionals across the food & beverage ecosystem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>Founding Memberships Are Open</h2>
+  <p>Join now and lock in your founding member rate before the official launch in January 2027.</p>
+  <a href="fbn-membership.html" class="btn-white">Become a Founding Member</a>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="who-for">
+  <div class="section-header fade-up">
+    <h2>Who Is This For?</h2>
+    <p>If you work in or around the food & beverage industry, this network is for you.</p>
+  </div>
+  <div class="who-grid">
+    <div class="who-card fade-up">
+      <div class="who-card-header">
+        <h3>Food & Beverage Companies</h3>
+      </div>
+      <div class="who-card-body">
+        <p>For any company that manufactures, co-packs, distributes, or markets a food, beverage, ingredient, or flavor product. This includes CPG brands, ingredient suppliers, co-packers, contract manufacturers, distributors, and more.</p>
+        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px">Explore F&B Membership</a>
+      </div>
+    </div>
+    <div class="who-card fade-up">
+      <div class="who-card-header" style="background:var(--charcoal)">
+        <h3>Foodservice & Restaurants</h3>
+      </div>
+      <div class="who-card-body">
+        <p>For chefs, operators, distributors, and foodservice companies navigating an industry that's evolving faster than ever — from menu innovation to supply chain challenges to changing consumer expectations.</p>
+        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px">Explore Foodservice Membership</a>
+      </div>
+    </div>
+    <div class="who-card fade-up">
+      <div class="who-card-header" style="background:var(--magenta-dark)">
+        <h3>Providers & Industry Partners</h3>
+      </div>
+      <div class="who-card-body">
+        <p>For companies and organizations that support the food & beverage industry — including marketing agencies, financial and legal services, consultants, packaging and equipment suppliers, logistics providers, non-profits, associations, and media companies.</p>
+        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px">Explore Provider Membership</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGIONAL CHAPTERS -->
+<section class="chapters">
+  <div class="chapters-inner">
+    <div class="section-header fade-up">
+      <h2>Global Chapters</h2>
+      <p>F&B Network is building chapters around the world so you can connect with professionals in your region.</p>
+    </div>
+    <div class="chapters-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🌊</div>
+        <h3>West Coast</h3>
+        <p>California, Oregon, Washington. Home to natural, organic, and innovation-driven brands.</p>
+        <span class="chapter-status">Launch 2027</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🌾</div>
+        <h3>Midwest</h3>
+        <p>The heartland of food manufacturing. Illinois, Wisconsin, Ohio, Michigan, Minnesota.</p>
+        <span class="chapter-status">Launch 2027</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">☀️</div>
+        <h3>South</h3>
+        <p>Texas, Georgia, Florida, the Carolinas, and a fast-growing F&B manufacturing corridor.</p>
+        <span class="chapter-status">Launch 2027</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🏙️</div>
+        <h3>East Coast</h3>
+        <p>New York, New Jersey, Pennsylvania, New England, and the Mid-Atlantic.</p>
+        <span class="chapter-status">Launch 2027</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🍁</div>
+        <h3>Canada</h3>
+        <p>Toronto, Vancouver, Montreal, and beyond. A growing hub for food innovation and clean label.</p>
+        <span class="chapter-status">Coming 2027</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🇪🇺</div>
+        <h3>Europe</h3>
+        <p>UK, Germany, Netherlands, France, and more. Leading in sustainability and regulatory innovation.</p>
+        <span class="chapter-status">Coming 2027</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🌎</div>
+        <h3>Latin America</h3>
+        <p>Mexico, Brazil, Colombia, and the broader region. Rapid growth in F&B manufacturing and export.</p>
+        <span class="chapter-status">Coming 2028</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🌏</div>
+        <h3>Asia</h3>
+        <p>Japan, China, Southeast Asia, India. The world's fastest-growing food & beverage market.</p>
+        <span class="chapter-status">Coming 2028</span>
+      </div>
+      <div class="chapter-card fade-up">
+        <div class="chapter-map">🦘</div>
+        <h3>ANZ</h3>
+        <p>Australia and New Zealand. Innovation leaders in clean label, functional foods, and sustainability.</p>
+        <span class="chapter-status">Coming 2028</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="fade-up">
+      <p style="font-size:16px;color:var(--charcoal-light);max-width:500px;margin:0 auto 20px;line-height:1.7">Interested in sponsoring a chapter in your region?</p>
+      <a href="#" class="btn-secondary">Sponsor a Chapter</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S COMING -->
+<section class="connected" id="resources">
+  <div class="section-header fade-up">
+    <h2>What's Coming</h2>
+    <p>Here's what founding members will get access to as we build the network.</p>
+  </div>
+  <div class="connected-grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="connected-card fade-up">
+      <div class="icon">🎥</div>
+      <h3>Content Library</h3>
+      <p>On-demand webinars, interviews, and educational content created by and for food & beverage professionals.</p>
+      <a href="#">Get Notified →</a>
+    </div>
+    <div class="connected-card fade-up">
+      <div class="icon">💼</div>
+      <h3>Industry Job Board</h3>
+      <p>A dedicated F&B industry job board. Post roles, find talent, advance your career.</p>
+      <a href="#">Get Notified →</a>
+    </div>
+    <div class="connected-card fade-up">
+      <div class="icon">🛠️</div>
+      <h3>Member Directory</h3>
+      <p>A searchable directory of brands, suppliers, co-packers, and service providers across the industry.</p>
+      <a href="#">Get Notified →</a>
+    </div>
+    <div class="connected-card fade-up">
+      <div class="icon">📅</div>
+      <h3>Events & Meetups</h3>
+      <p>Virtual and in-person events designed to spark real connections. Founding members get priority access.</p>
+      <a href="#">Get Notified →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner fade-up">
+    <h2>Be the First to Know</h2>
+    <p>Join now and be the first to hear about launch parties, events, and community updates.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Enter your email">
+      <button>Get Updates</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="food">food</span> <span class="amp" style="color:rgba(255,255,255,0.5)">&</span> <span class="bev">beverage</span>
+          <span class="net">network</span>
+        </div>
+        <p>The premier platform for food and beverage professionals. Launching soon — founding memberships now open.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About</a>
+        <a href="fbn-membership.html">Membership</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:var(--magenta);color:white;padding:10px 20px;border-radius:100px;font-weight:600;font-size:14px;margin-top:4px">LinkedIn</a>
+      </div>
+    </div>
+    <p style="font-size:13px;color:rgba(255,255,255,0.3);text-align:center;margin-top:32px">© 2026 Food & Beverage Network. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
