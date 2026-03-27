@@ -241,38 +241,38 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
   .hero-visual{order:-1}
   .hero-text h1{font-size:40px}
   .benefits-grid,.events-grid,.connected-grid,.who-grid{grid-template-columns:1fr}
-  .chapters-grid[style]{grid-template-columns:1fr!important}
-  .chapters-grid{grid-template-columns:1fr}
+  .chapters-grid,.chapters-grid[style]{grid-template-columns:1fr!important}
   .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
   .testimonials-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
   .mobile-menu{display:block}
   .newsletter-form{flex-direction:column}
-  /* Hero mobile */
+  .spon-cards{grid-template-columns:1fr!important}
+  /* What Is F&B Network grid */
+  .what-is-grid{grid-template-columns:repeat(2,1fr)!important;gap:16px!important}
+  /* Why Now 2x2 cards */
+  .why-now-cards{grid-template-columns:1fr!important}
+  /* Trend cards */
+  .trend-cards-grid{grid-template-columns:repeat(2,1fr)!important}
+  /* Hero */
   section[style*="min-height:420px"] h1{font-size:32px!important}
   section[style*="min-height:420px"] > div:last-child{padding:40px 24px!important}
-  /* What Is grid */
-  section[style*="grid-template-columns:repeat(3"] div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
-  /* Why Now cards */
-  section[style*="charcoal-dark"] div[style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr!important}
-  section[style*="charcoal-dark"] div[style*="grid-template-columns:repeat(auto-fit"]{grid-template-columns:1fr!important}
-  /* Sponsorship cards */
-  .spon-cards{grid-template-columns:1fr!important}
-  /* Additional opps grid in membership */
-  section[style*="grid-template-columns:repeat(3,1fr)"] > div{grid-template-columns:1fr!important}
 }
 @media(max-width:600px){
   .stats-inner{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
-  section[style*="min-height:420px"] h1{font-size:28px!important}
+  section[style*="min-height:420px"] h1{font-size:26px!important}
   section[style*="min-height:420px"]{min-height:auto!important}
   section[style*="padding:80px 40px"]{padding:50px 20px!important}
   section[style*="padding:60px 40px"]{padding:40px 20px!important}
   h2{font-size:28px!important}
   .section-header h2{font-size:28px!important}
   h2[style*="white-space:nowrap"]{white-space:normal!important;font-size:26px!important}
+  /* What Is - single column on phone */
+  .what-is-grid{grid-template-columns:1fr!important}
+  .trend-cards-grid{grid-template-columns:1fr!important}
 }
 </style>
 </head>
@@ -324,7 +324,7 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
       <h2 style="white-space:nowrap">What Is Food & Beverage Network?</h2>
     </div>
     <p style="color:var(--charcoal-light);font-size:18px;line-height:1.7;max-width:800px;margin:0 auto 48px;text-align:center">A community-first platform built for the professionals driving the food & beverage industry forward.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div class="what-is-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
       <div class="fade-up" style="background:var(--cream);border-radius:14px;padding:28px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
           <span style="background:var(--magenta);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">👥</span>
@@ -380,7 +380,7 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
     <p style="color:#aaa;font-size:18px;line-height:1.7;max-width:800px;margin:0 auto 48px;text-align:center">The industry is transforming faster than ever. The professionals driving it need a new place to connect, share, and grow together.</p>
 
     <!-- 4 POSITIONING CARDS -->
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:60px">
+    <div class="why-now-cards" style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:60px">
       <div class="fade-up" style="background:rgba(255,255,255,0.05);border-radius:14px;padding:32px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
           <span style="font-size:28px">⭐</span>
@@ -414,7 +414,7 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
     <!-- 8 TREND CARDS -->
     <h3 style="color:white;text-align:center;font-family:var(--font-display);font-size:24px;margin-bottom:8px" class="fade-up">The Industry Is at an Inflection Point</h3>
     <p style="color:#aaa;text-align:center;font-size:15px;margin-bottom:32px" class="fade-up">More is changing right now than in the last 20 years combined.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+    <div class="trend-cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
       <div class="fade-up" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:24px;border-left:4px solid var(--magenta)">
         <h4 style="color:white;font-size:15px;margin:0 0 8px">🧬 Functional Health, GLP-1 & Protein</h4>
         <p style="color:#999;font-size:13px;line-height:1.6;margin:0">GLP-1 reshaping demand for high-protein, gut health, and satiety products</p>
