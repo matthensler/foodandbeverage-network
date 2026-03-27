@@ -189,7 +189,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,255,255,0.95
 /* GET CONNECTED */
 .connected{padding:100px 40px;background:var(--white)}
 .connected-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.connected-card{text-align:center;padding:40px 28px;border-radius:16px;border:2px solid var(--light-gray);transition:all .3s}
+.connected-card{text-align:center;padding:40px 28px;border-radius:16px;border:2px solid var(--light-gray);transition:all .3s;display:flex;flex-direction:column}
 .connected-card:hover{border-color:var(--magenta);background:var(--cream)}
 .connected-card .icon{font-size:40px;margin-bottom:16px}
 .connected-card h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--charcoal);margin-bottom:10px}
@@ -213,10 +213,10 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,255,255,0.95
 footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px solid rgba(255,255,255,0.06)}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-brand .footer-logo{font-family:var(--font-display);font-weight:800;font-size:20px;margin-bottom:12px}
+.footer-brand .footer-logo{font-family:var(--font-display);font-weight:800;font-size:20px;margin-bottom:12px;display:inline-block}
 .footer-brand .footer-logo .food{color:var(--magenta-light)}
 .footer-brand .footer-logo .bev{color:rgba(255,255,255,0.9)}
-.footer-brand .footer-logo .net{display:block;color:var(--magenta-light);font-size:10px;letter-spacing:4px;font-weight:700;margin-top:-2px;margin-left:auto;text-align:right;max-width:135px}
+.footer-brand .footer-logo .net{display:block;color:var(--magenta-light);font-size:11px;letter-spacing:5px;font-weight:700;margin-top:-4px;margin-left:auto;text-align:right;max-width:145px}
 .footer-brand p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:280px}
 .footer-col h4{font-family:var(--font-display);font-size:16px;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:16px}
 .footer-col a{display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color .2s}
@@ -304,7 +304,7 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
   <div style="position:absolute;inset:0;background:linear-gradient(90deg, #54565A 0%, #54565A 25%, rgba(84,86,90,0.85) 40%, rgba(84,86,90,0.3) 55%, transparent 70%)"></div>
   <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:50px 50px 30px;min-height:420px;display:flex;align-items:center">
     <div style="max-width:460px">
-      <div class="fade-up" style="display:inline-block;background:var(--magenta);color:white;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:20px">🚀 Now Accepting Founding Members</div>
+      <div class="fade-up" style="display:inline-block;background:var(--magenta);color:white;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:20px;max-width:100%;box-sizing:border-box">🚀 Now Accepting Founding Members</div>
       <h1 class="fade-up" style="font-family:var(--font-display);font-size:46px;font-weight:800;color:white;line-height:1.1;margin:0 0 20px">
         The new home<br>for food &<br>beverage<br><span style="color:var(--magenta)">professionals</span>
       </h1>
@@ -516,7 +516,7 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
       </div>
       <div class="who-card-body">
         <p>For any company that manufactures, co-packs, distributes, or markets a food, beverage, ingredient, or flavor product. This includes CPG brands, ingredient suppliers, co-packers, contract manufacturers, distributors, and more.</p>
-        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px">Explore F&B Membership</a>
+        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px;display:block;text-align:center;width:100%">Explore Membership</a>
       </div>
     </div>
     <div class="who-card fade-up">
@@ -525,7 +525,7 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
       </div>
       <div class="who-card-body">
         <p>For chefs, operators, distributors, and foodservice companies navigating an industry that's evolving faster than ever — from menu innovation to supply chain challenges to changing consumer expectations.</p>
-        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px">Explore Foodservice Membership</a>
+        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px;display:block;text-align:center;width:100%">Explore Membership</a>
       </div>
     </div>
     <div class="who-card fade-up">
@@ -534,7 +534,7 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
       </div>
       <div class="who-card-body">
         <p>For companies and organizations that support the food & beverage industry — including marketing agencies, financial and legal services, consultants, packaging and equipment suppliers, logistics providers, non-profits, associations, and media companies.</p>
-        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px">Explore Provider Membership</a>
+        <a href="fbn-membership.html" class="btn-primary" style="font-size:14px;padding:12px 28px;margin-top:20px;display:block;text-align:center;width:100%">Explore Membership</a>
       </div>
     </div>
   </div>
@@ -552,25 +552,25 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
         <div class="chapter-map">🌊</div>
         <h3>West Coast</h3>
         <p>California, Oregon, Washington. Home to natural, organic, and innovation-driven brands.</p>
-        <span class="chapter-status">Launch 2027</span>
+        <span class="chapter-status">Coming 2027</span>
       </div>
       <div class="chapter-card fade-up">
         <div class="chapter-map">🌾</div>
         <h3>Midwest</h3>
         <p>The heartland of food manufacturing. Illinois, Wisconsin, Ohio, Michigan, Minnesota.</p>
-        <span class="chapter-status">Launch 2027</span>
+        <span class="chapter-status">Coming 2027</span>
       </div>
       <div class="chapter-card fade-up">
         <div class="chapter-map">☀️</div>
         <h3>South</h3>
         <p>Texas, Georgia, Florida, the Carolinas, and a fast-growing F&B manufacturing corridor.</p>
-        <span class="chapter-status">Launch 2027</span>
+        <span class="chapter-status">Coming 2027</span>
       </div>
       <div class="chapter-card fade-up">
         <div class="chapter-map">🏙️</div>
         <h3>East Coast</h3>
         <p>New York, New Jersey, Pennsylvania, New England, and the Mid-Atlantic.</p>
-        <span class="chapter-status">Launch 2027</span>
+        <span class="chapter-status">Coming 2027</span>
       </div>
       <div class="chapter-card fade-up">
         <div class="chapter-map">🍁</div>
@@ -588,19 +588,19 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
         <div class="chapter-map">🌎</div>
         <h3>Latin America</h3>
         <p>Mexico, Brazil, Colombia, and the broader region. Rapid growth in F&B manufacturing and export.</p>
-        <span class="chapter-status">Coming 2028</span>
+        <span class="chapter-status">Coming 2027</span>
       </div>
       <div class="chapter-card fade-up">
         <div class="chapter-map">🌏</div>
         <h3>Asia</h3>
         <p>Japan, China, Southeast Asia, India. The world's fastest-growing food & beverage market.</p>
-        <span class="chapter-status">Coming 2028</span>
+        <span class="chapter-status">Coming 2027</span>
       </div>
       <div class="chapter-card fade-up">
         <div class="chapter-map">🦘</div>
         <h3>ANZ</h3>
         <p>Australia and New Zealand. Innovation leaders in clean label, functional foods, and sustainability.</p>
-        <span class="chapter-status">Coming 2028</span>
+        <span class="chapter-status">Coming 2027</span>
       </div>
     </div>
     <div style="text-align:center;margin-top:40px" class="fade-up">
@@ -621,25 +621,25 @@ footer{padding:60px 40px 32px;background:var(--charcoal-dark);border-top:1px sol
       <div class="icon">🎥</div>
       <h3>Content Library</h3>
       <p>On-demand webinars, interviews, and educational content created by and for food & beverage professionals.</p>
-      <a href="#">Get Notified →</a>
+      <a href="#" style="display:block;text-align:center;background:var(--magenta);color:white;padding:10px 20px;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;margin-top:auto">Get Notified</a>
     </div>
     <div class="connected-card fade-up">
       <div class="icon">💼</div>
       <h3>Industry Job Board</h3>
       <p>A dedicated F&B industry job board. Post roles, find talent, advance your career.</p>
-      <a href="#">Get Notified →</a>
+      <a href="#" style="display:block;text-align:center;background:var(--magenta);color:white;padding:10px 20px;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;margin-top:auto">Get Notified</a>
     </div>
     <div class="connected-card fade-up">
       <div class="icon">🛠️</div>
       <h3>Member Directory</h3>
       <p>A searchable directory of brands, suppliers, co-packers, and service providers across the industry.</p>
-      <a href="#">Get Notified →</a>
+      <a href="#" style="display:block;text-align:center;background:var(--magenta);color:white;padding:10px 20px;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;margin-top:auto">Get Notified</a>
     </div>
     <div class="connected-card fade-up">
       <div class="icon">📅</div>
       <h3>Events & Meetups</h3>
       <p>Virtual and in-person events designed to spark real connections. Founding members get priority access.</p>
-      <a href="#">Get Notified →</a>
+      <a href="#" style="display:block;text-align:center;background:var(--magenta);color:white;padding:10px 20px;border-radius:100px;font-weight:600;font-size:13px;text-decoration:none;margin-top:auto">Get Notified</a>
     </div>
   </div>
 </section>
